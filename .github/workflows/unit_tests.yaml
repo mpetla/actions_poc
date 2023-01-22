@@ -1,18 +1,34 @@
 name: Unit tests
 
-on: [workflow_dispatch]
+on:
   # push:
   #   branches: [ main ]
   #   paths-ignore:
   #         - '.github/workflows/feature.*'
   #         - '.github/workflows/pull-request.*'
 
+  workflow_dispatch:
+
 jobs:
   unit_tests:
     runs-on: ubuntu-latest
+    container: node:lts
+
     steps:
       - name: Checkout
         uses: actions/checkout@master
+
+      - name: List files
+        shell: bash
+        run: ls -la
+
+      - name: Check node
+        shell: bash
+        run: node -v
+
+      - name: Check npm
+        shell: bash
+        run: npm -v
 
       - name: Configure
         shell: bash
