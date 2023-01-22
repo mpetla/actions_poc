@@ -33,3 +33,4 @@ https://api.github.com/repos/mpetla/actions_poc/environments/prod
 
 
 gh workflow list
+gh workflow run unit_tests.yaml
