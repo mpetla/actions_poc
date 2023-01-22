@@ -1,0 +1,74 @@
+# name: Deployment
+
+# on:
+#   push:
+#     branches: [ main ]
+#     paths-ignore:
+#           - '.github/workflows/feature.*'
+#           - '.github/workflows/pull-request.*'
+
+#   workflow_dispatch:
+
+# jobs:
+#   build-and-publish:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print event
+#         shell: bash
+#         run: echo "Event:" ${{ github.ref_name }}
+               
+#       - name: Print labels
+#         shell: bash
+#         run: echo "Label:" ${{ github.event.label.name }}
+    
+#       - name: List files
+#         shell: bash
+#         run: ls -la
+        
+#       - name: Buka master
+#         if: github.ref_name == 'master'
+#         shell: bash
+#         run: echo "buka master"
+        
+#       - name: Buka non master
+#         if: github.ref_name != 'master'
+#         shell: bash
+#         run: echo "buka non master"
+      
+#       - name: Checkout
+#         uses: actions/checkout@master
+        
+#       - name: Print previous git tag
+#         shell: bash
+#         run: git fetch -a        
+        
+#       - name: List files
+#         shell: bash
+#         run: ls -la
+
+#   deploy-test:
+#     if: github.ref_name == 'main' && github.ref_type == 'branch' && github.event_name == 'push'
+#     runs-on: 'ubuntu-latest'
+#     environment: 'test'
+#     needs: build-and-publish
+#     steps:
+#       - name: Download artifact
+#         run: ls -la
+
+#   deploy-qa:
+#     if: github.ref_name == 'main' && github.ref_type == 'branch' && github.event_name == 'push'
+#     runs-on: 'ubuntu-latest'
+#     environment: 'qa'
+#     needs: [build-and-publish, deploy-test]
+#     steps:
+#       - name: Download artifact
+#         run: ls -la
+
+#   deploy-prod:
+#     if: github.ref_name == 'main' && github.ref_type == 'branch' && github.event_name == 'push'
+#     runs-on: 'ubuntu-latest'
+#     environment: 'prod'
+#     needs: [build-and-publish, deploy-test, deploy-qa]
+#     steps:
+#       - name: Download artifact
+#         run: ls -la
