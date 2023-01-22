@@ -30,6 +30,10 @@ jobs:
         shell: bash
         run: npm -v
 
+      - name: Change directory
+        shell: bash
+        run: cd service
+
       - name: Configure
         shell: bash
         run: npm install
