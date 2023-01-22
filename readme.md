@@ -23,12 +23,13 @@ gh api \
 -X PUT \
 -H "Accept: application/vnd.github+json" \
 -H "X-GitHub-Api-Version: 2022-11-28" \
-https://api.github.com/repos/mpetla/actions_poc/environments/uat \
--d '{"reviewers":[{"type":"User","id":1}]}'
+https://api.github.com/repos/mpetla/actions_poc/environments/uat
 
 gh api \
 -X PUT \
 -H "Accept: application/vnd.github+json" \
 -H "X-GitHub-Api-Version: 2022-11-28" \
-https://api.github.com/repos/mpetla/actions_poc/environments/prod \
--d '{"reviewers":[{"type":"User","id":1}]}'
+https://api.github.com/repos/mpetla/actions_poc/environments/prod
+
+
+gh workflow list
